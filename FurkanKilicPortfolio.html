@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Furkan Kılıç Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+    /* Reset and base */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Open Sans', sans-serif;
+      background: #fff;
+      color: #222;
+      line-height: 1.6;
+    }
+    h1, h2, h3 {
+      font-family: 'Montserrat', sans-serif;
+      margin-bottom: 0.5em;
+    }
+    a {
+      color: #444;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Container */
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 2em 1em;
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #fff;
+      border-bottom: 3px solid #222;
+      padding: 1em 0;
+      z-index: 100;
+      text-align: center;
+      box-shadow: 0 4px 18px 0 rgba(0,0,0,0.10);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    nav a {
+      margin: 0 1em;
+      font-weight: 600;
+      font-family: 'Montserrat', sans-serif;
+      cursor: pointer;
+      color: #333;
+      transition: color 0.3s ease, transform 0.2s cubic-bezier(.4,0,.2,1);
+      display: inline-block;
+      text-decoration: none !important;
+      border-bottom: none !important;
+      box-shadow: none !important;
+      font-size: 1.1em;
+    }
+    nav a:hover {
+      color: #000;
+      transform: scale(1.15);
+      font-weight: 800;
+      text-decoration: none !important;
+      border-bottom: none !important;
+      box-shadow: none !important;
+    }
+    nav a:focus, nav a:active {
+      text-decoration: none !important;
+      border-bottom: none !important;
+      box-shadow: none !important;
+    }
+    .dark-toggle {
+      position: absolute;
+      right: 2em;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      font-size: 1.5em;
+      cursor: pointer;
+      color: #333;
+      z-index: 102;
+      transition: color 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .dark-toggle .material-icons {
+      font-size: 1.5em;
+    }
+    .dark-toggle:hover {
+      color: #000;
+    }
+    @media (max-width: 768px) {
+      .dark-toggle {
+        right: 1em;
+        font-size: 1.3em;
+      }
+    }
+    body.dark-mode {
+      background: #111 !important;
+      color: #fff !important;
+    }
+    body.dark-mode nav {
+      background: #111 !important;
+      border-bottom: 3px solid #fff !important;
+      box-shadow: 0 4px 18px 0 rgba(0,0,0,0.25) !important;
+    }
+    body.dark-mode nav a, body.dark-mode .navbar-logo {
+      color: #fff !important;
+    }
+    body.dark-mode .navbar-logo:hover {
+      color: #eee !important;
+    }
+    body.dark-mode .dark-toggle {
+      color: #fff !important;
+    }
+    body.dark-mode .project, body.dark-mode .contact-form, body.dark-mode .social-links-container {
+      background: #181818 !important;
+      color: #fff !important;
+      border-color: #222 !important;
+    }
+    body.dark-mode .project h3, body.dark-mode .social-links-title {
+      color: #fff !important;
+    }
+    body.dark-mode .cv-download {
+      background: #fff !important;
+      color: #111 !important;
+    }
+    body.dark-mode .cv-download:hover {
+      background: #eee !important;
+      color: #111 !important;
+    }
+    body.dark-mode .custom-contact-form input, body.dark-mode .custom-contact-form button {
+      background: #222 !important;
+      color: #fff !important;
+      border-color: #333 !important;
+    }
+    body.dark-mode .custom-contact-form input:focus {
+      border: 1.5px solid #fff !important;
+    }
+    body.dark-mode .custom-contact-form .success-message {
+      background: #222 !important;
+      color: #aaffaa !important;
+    }
+    body.dark-mode .custom-contact-form .error-message {
+      color: #ff8888 !important;
+    }
+    body.dark-mode .social-icon {
+      color: #fff !important;
+    }
+    body.dark-mode .social-icon.instagram:hover {
+      color: #fff !important;
+    }
+    body.dark-mode .social-icon.linkedin:hover {
+      color: #fff !important;
+    }
+    body.dark-mode .social-icon.email:hover {
+      color: #fff !important;
+    }
+    body.dark-mode .hero-photo-container {
+      box-shadow: 0 4px 24px #0008 !important;
+    }
+    body.dark-mode .hero-photo {
+      box-shadow: 0 8px 32px #000a !important;
+    }
+    body.dark-mode .hero-section {
+      background: #111 !important;
+    }
+    body.dark-mode .hero-title {
+      color: #fff !important;
+    }
+    body.dark-mode .hero-subtitle {
+      color: #ccc !important;
+    }
+    body.dark-mode .material-icons {
+      color: #fff;
+      text-shadow: none;
+    }
+
+    /* Sections */
+    section {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      padding: 4em 0;
+      border-bottom: 1px solid #bbb;
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Specific styles */
+    #home h1 {
+      font-size: 2.8rem;
+      margin-bottom: 0.2em;
+    }
+    #home p {
+      font-size: 1.2rem;
+      color: #555;
+    }
+
+    /* Project Cards */
+    .project {
+      margin-bottom: 3em;
+      padding: 2em;
+      border: 1px solid #eee;
+      border-radius: 8px;
+      background: #fff;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .project:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    .project::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #333, #666);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    .project:hover::after {
+      transform: scaleX(1);
+    }
+    .project h3 {
+      color: #333;
+      font-size: 1.4rem;
+      margin-bottom: 0.5em;
+    }
+    .project .project-meta {
+      color: #666;
+      font-size: 0.9rem;
+      margin-bottom: 1em;
+      font-style: italic;
+    }
+    .project p {
+      margin-bottom: 1em;
+    }
+    .project .tools {
+      background: #fff;
+      padding: 0.5em 1em;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      color: #555;
+      border-left: 3px solid #ddd;
+    }
+
+    /* CV Download Button */
+    .cv-download {
+      background: #000;
+      color: #fff;
+      padding: 1em 2em;
+      border-radius: 6px;
+      display: inline-block;
+      margin: 1em 0;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .cv-download:hover {
+      background: #333;
+      text-decoration: none;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .cv-download:active {
+      transform: translateY(0);
+    }
+    .cv-download::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 5px;
+      height: 5px;
+      background: rgba(255,255,255,0.5);
+      opacity: 0;
+      border-radius: 100%;
+      transform: scale(1, 1) translate(-50%);
+      transform-origin: 50% 50%;
+    }
+    .cv-download:hover::after {
+      animation: ripple 1s ease-out;
+    }
+    @keyframes ripple {
+      0% {
+        transform: scale(0, 0);
+        opacity: 0.5;
+      }
+      100% {
+        transform: scale(20, 20);
+        opacity: 0;
+      }
+    }
+
+    /* Contact Form */
+    .contact-form {
+      margin: 2em 0;
+      padding: 2em;
+      background: #f9f9f9;
+      border-radius: 8px;
+    }
+
+    /* Lists */
+    ul {
+      padding-left: 1.2em;
+      color: #444;
+    }
+
+    /* Contact links */
+    #contact a {
+      word-break: break-word;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .container {
+        padding: 1em;
+      }
+      #home h1 {
+        font-size: 2rem;
+      }
+      nav a {
+        margin: 0 0.5em;
+        font-size: 0.9rem;
+      }
+      .project {
+        padding: 1.5em;
+      }
+    }
+
+    .project-image-container {
+      text-align: center;
+      margin-bottom: 1em;
+    }
+    .project-image {
+      max-width: 100%;
+      max-height: 220px;
+      border-radius: 8px;
+      box-shadow: 0 2px 12px #0002;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .project-image:hover {
+      transform: scale(1.04);
+      box-shadow: 0 4px 24px #0003;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 90vh;
+      background: #fff;
+      padding-top: 6em;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 1.2s cubic-bezier(.4,0,.2,1), transform 1.2s cubic-bezier(.4,0,.2,1);
+      position: relative;
+    }
+    .hero-section.fade-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .hero-photo-container {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 0 4px 24px #0002;
+      margin-bottom: 1.5em;
+      cursor: pointer;
+      transition: box-shadow 0.3s;
+    }
+    .hero-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.35s cubic-bezier(.4,0,.2,1), box-shadow 0.3s;
+    }
+    .hero-photo-container:hover .hero-photo {
+      transform: scale(1.07);
+      box-shadow: 0 8px 32px #0003;
+    }
+    .hero-photo-container:active .hero-photo {
+      /* fallback for click, but JS will handle rotation */
+    }
+    .hero-title {
+      font-size: 2.2rem;
+      font-family: 'Montserrat', sans-serif;
+      margin-bottom: 0.5em;
+      text-align: center;
+      color: #111;
+    }
+    .hero-subtitle {
+      font-size: 1.15rem;
+      color: #86868B;
+      text-align: center;
+      max-width: 500px;
+      margin: 0 auto;
+      font-weight: 500;
+    }
+    .show-portfolio-btn {
+      margin-top: 2em;
+      padding: 1.1em 2.2em 1.3em 2.2em;
+      background: #f5f5f5;
+      border: 2.5px solid #bbb;
+      border-radius: 50px;
+      color: #333;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 1.1em;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.2em;
+      transition: all 0.3s cubic-bezier(.4,0,.2,1);
+      box-shadow: 0 6px 24px rgba(0,0,0,0.18);
+    }
+    .show-portfolio-btn span {
+      display: block;
+      margin-top: 0.4em;
+    }
+    .show-portfolio-btn:hover {
+      transform: translateY(3px) scale(1.03);
+      box-shadow: 0 10px 32px rgba(0,0,0,0.22);
+      background: #eee;
+      border-color: #888;
+    }
+    .show-portfolio-btn .material-icons {
+      font-size: 1.7em;
+      margin-top: 0.2em;
+      transition: transform 0.3s cubic-bezier(.4,0,.2,1);
+    }
+    .show-portfolio-btn:hover .material-icons {
+      transform: translateY(4px) scale(1.1);
+    }
+    body.dark-mode .show-portfolio-btn {
+      background: #222;
+      color: #fff;
+      border: 2.5px solid #444;
+      box-shadow: none;
+    }
+    body.dark-mode .show-portfolio-btn:hover {
+      background: #333;
+      border-color: #aaa;
+      box-shadow: none;
+    }
+
+    /* Custom Contact Form */
+    .custom-contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7em;
+      margin-top: 1em;
+    }
+    .custom-contact-form label {
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 0.2em;
+    }
+    .custom-contact-form input {
+      padding: 0.7em;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1em;
+      outline: none;
+      transition: border 0.2s;
+    }
+    .custom-contact-form input:focus {
+      border: 1.5px solid #2a8cff;
+    }
+    .custom-contact-form input.error {
+      border-color: #ff4444;
+    }
+    .custom-contact-form .error-message {
+      color: #ff4444;
+      font-size: 0.85em;
+      margin-top: -0.5em;
+      display: none;
+    }
+    .custom-contact-form button {
+      margin-top: 1em;
+      padding: 0.8em 0;
+      background: #111;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.1em;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .custom-contact-form button:hover {
+      background: #333;
+    }
+    .custom-contact-form button:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+    .custom-contact-form .success-message {
+      display: none;
+      color: #28a745;
+      text-align: center;
+      margin-top: 1em;
+      padding: 1em;
+      background: #e8f5e9;
+      border-radius: 5px;
+    }
+
+    /* Gallery Thumbnails */
+    .gallery {
+      display: flex;
+      gap: 0.5em;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 1em;
+    }
+    .gallery-thumb {
+      width: 90px;
+      height: 70px;
+      object-fit: cover;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px #0001;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .gallery-thumb:hover {
+      transform: scale(1.07);
+      box-shadow: 0 4px 16px #0002;
+    }
+
+    /* Navbar Logo */
+    .navbar-logo {
+      position: absolute;
+      left: 2em;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 1.2em;
+      color: #333;
+      text-decoration: none;
+      transition: color 0.3s ease, transform 0.3s ease;
+      z-index: 101;
+    }
+    .navbar-logo:hover {
+      color: #000;
+      transform: translateY(-50%) scale(1.05);
+    }
+
+    /* Social Media Links */
+    .social-links-container {
+      margin: 2em 0;
+      padding: 2em;
+      background: #f9f9f9;
+      border-radius: 8px;
+      text-align: center;
+    }
+    .social-links-title {
+      font-size: 1.2em;
+      color: #333;
+      margin-bottom: 1em;
+      font-weight: 600;
+    }
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 2.5em;
+      flex-wrap: wrap;
+    }
+    .social-icon {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      color: #333;
+      transition: all 0.3s ease;
+      text-decoration: none !important;
+    }
+    .social-icon:hover {
+      transform: translateY(-5px);
+      color: #000;
+      text-decoration: none !important;
+    }
+    .social-icon i {
+      font-size: 2.2em;
+      margin-bottom: 0.5em;
+    }
+    .social-icon span {
+      font-size: 0.9em;
+      font-weight: 500;
+      text-decoration: none !important;
+    }
+    /* Platform-specific colors on hover */
+    .social-icon.instagram:hover {
+      color: #E1306C;
+    }
+    .social-icon.linkedin:hover {
+      color: #0077B5;
+    }
+    .social-icon.email:hover {
+      color: #EA4335;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .navbar-logo {
+        position: relative;
+        left: 0;
+        transform: none;
+        margin-bottom: 1em;
+        display: block;
+        text-align: center;
+      }
+      .navbar-logo:hover {
+        transform: scale(1.05);
+      }
+      nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 1em;
+      }
+      .social-icons {
+        gap: 1.5em;
+      }
+    }
+
+    /* Single line divider for Hero and About Me sections */
+    #hero, #about {
+      border-bottom: none !important;
+    }
+    #about {
+      margin-top: 0;
+      border-bottom: 1px solid #bbb !important;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" class="navbar-logo">Furkan Kılıç</a>
+    <a href="#home">Home</a>
+    <a href="#about">About Me</a>
+    <a href="#projects">Portfolio</a>
+    <a href="#resume">Resume</a>
+    <a href="#contact">Contact</a>
+    <button class="dark-toggle" id="darkToggle" aria-label="Toggle dark mode"><span id="darkIcon" class="material-icons">dark_mode</span></button>
+  </nav>
+
+  <div class="container">
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section">
+      <div class="hero-photo-container">
+        <img src="Furkanpp.jpeg" alt="Furkan Kılıç" class="hero-photo" loading="lazy">
+      </div>
+      <h1 class="hero-title">I'm Furkan, New Media Specialist</h1>
+      <p class="hero-subtitle">I create unique content focusing on social media design, illustration, web design, and motion graphics.</p>
+      <button class="show-portfolio-btn" onclick="document.querySelector('#projects').scrollIntoView({behavior: 'smooth'})">
+        Show Portfolio
+      </button>
+      <span class="material-icons" style="display: block; margin-top: 0.8em; font-size: 1.7em; color: #333;">arrow_downward</span>
+    </section>
+
+    <section id="home">
+      <!-- Removed the 'Hello, I'm Furkan' section as per new design -->
+    </section>
+
+    <section id="about">
+      <h2>About Me</h2>
+      <p>Born in 2003 in Izmir, I started my Bachelor's degree in New Media and Communication at Yaşar University in 2021. Since then, I have been developing my technical skills and visual storytelling ability.</p>
+      <p>I actively use Adobe Illustrator, Photoshop, Premiere Pro, Figma, and Webflow to create creative and user-focused works.</p>
+      <p>My goal is to contribute to global projects in an international creative agency, combining aesthetics and functionality.</p>
+    </section>
+
+    <section id="projects">
+      <h2>Portfolio</h2>
+      
+      <div class="project">
+        <h3>Angry – Monochrome Color Composition</h3>
+        <div class="project-meta">Monochrome Color Study | 2024</div>
+        <div class="project-image-container">
+          <img src="project1.jpg.jpg" alt="Angry – Monochrome Color Composition" class="project-image" onclick="openModal('project1.jpg.jpg')">
+        </div>
+        <p><strong>Goal:</strong> To explore how a single color—in this case, red—can visually express the intense emotion of anger using only tone variations.</p>
+        <p><strong>Process:</strong> The chosen word was Angry. Based on the emotional associations of red—such as aggression, tension, and heat—I developed a composition using only different shades of red. No additional colors were used, in line with the project brief. A mood board guided the emotional tone, and the final composition was built through experimentation with form, rhythm, and contrast to evoke a sense of inner chaos and tension.</p>
+        <p><strong>Outcome:</strong> The resulting design expresses anger through bold shapes, sharp contrasts, and dynamic composition—all in red tones. It demonstrates how a single color, when used thoughtfully, can powerfully convey complex emotional states.</p>
+      </div>
+
+      <div class="project">
+        <h3>Grocery Gourmet – Greengrocery Website Design</h3>
+        <div class="project-meta">Web Design & Branding | 2024</div>
+        <div class="project-image-container gallery">
+          <img src="lightbox1.jpg" alt="Gourmet Grocery 1" class="project-image gallery-thumb" onclick="openGallery(0)">
+          <img src="lightbox2.jpg" alt="Gourmet Grocery 2" class="project-image gallery-thumb" onclick="openGallery(1)">
+          <img src="lightbox3.jpg" alt="Gourmet Grocery 3" class="project-image gallery-thumb" onclick="openGallery(2)">
+          <img src="lightbox4.jpg" alt="Gourmet Grocery 4" class="project-image gallery-thumb" onclick="openGallery(3)">
+          <img src="lightbox5.jpg" alt="Gourmet Grocery 5" class="project-image gallery-thumb" onclick="openGallery(4)">
+        </div>
+        <p><strong>Goal:</strong> To design an interactive, user-friendly, and visually balanced web interface for Grocery Gourmet, a fictional brand I created. The aim of this project was to develop my ability to think in sequences and plan user interaction effectively.</p>
+        <p><strong>Process:</strong> The website consists of five main pages: Home, Products, About Us, Contact, and Online Help. To ensure a clear and intuitive user experience, I started with moodboards, sketches, and wireframes. The design process was guided by key visual principles such as hierarchy, alignment, contrast, and proximity. For the Grocery Gourmet brand, I developed a visual style that conveys freshness and quality, using modern typography, custom illustrations, and a carefully selected color palette to strengthen the brand identity.</p>
+        <p><strong>Outcome:</strong> The final design presents a shopping experience that is both aesthetic and functional, offering a unique and memorable user interface. The entire project was created in Adobe Illustrator at 1920×1080 px resolution, with all text outlined. Grocery Gourmet became a strong example of a contemporary digital greengrocery experience and a highlight in my portfolio.</p>
+      </div>
+
+      <div class="project">
+        <h3>The Honey-Making Process – Illustrated Infographic</h3>
+        <div class="project-meta">Infographic & Illustration | 2025</div>
+        <div class="project-image-container">
+          <img src="project3.jpg.jpg" alt="The Honey-Making Process – Illustrated Infographic" class="project-image" onclick="openModal('project3.jpg.jpg')">
+        </div>
+        <p><strong>Goal:</strong> To visually explain the complex and natural process of honey production in a clear, educational, and aesthetically engaging way using original illustrations.</p>
+        <p><strong>Process:</strong> After selecting the honey-making process, I broke it down into seven main steps—from flower pollination to honey storage in the hive. I conducted detailed research to understand each stage clearly. All visual elements were sketched and digitally illustrated by me in Adobe Illustrator—without using any stock images. The visual flow was carefully planned using original icons, a consistent color palette, and a clear hierarchy to ensure both clarity and storytelling.</p>
+        <p><strong>Outcome:</strong> The final infographic, designed in 1080×1920 px vertical format, combines scientific accuracy with creative visual storytelling. By illustrating every element myself, I aimed to make the process feel more authentic, cohesive, and memorable for the viewer. The result is an engaging educational tool suitable for students and general audiences alike.</p>
+      </div>
+    </section>
+
+    <!-- Modal for enlarged images -->
+    <div id="imgModal" class="modal" onclick="closeModal()" style="display:none;position:fixed;z-index:9999;left:0;top:0;width:100vw;height:100vh;background:rgba(0,0,0,0.8);align-items:center;justify-content:center;">
+      <span style="position:absolute;top:30px;right:50px;font-size:2.5rem;color:#fff;cursor:pointer;z-index:10001;" onclick="closeModal()">&times;</span>
+      <img id="modalImg" src="" alt="Project Image" style="max-width:90vw;max-height:80vh;box-shadow:0 8px 40px #000a;border-radius:12px;display:block;margin:auto;">
+    </div>
+
+    <!-- Lightbox Gallery Modal for Project 2 -->
+    <div id="galleryModal" class="modal" style="display:none;position:fixed;z-index:10000;left:0;top:0;width:100vw;height:100vh;background:rgba(0,0,0,0.9);align-items:center;justify-content:center;">
+      <span style="position:absolute;top:30px;right:50px;font-size:2.5rem;color:#fff;cursor:pointer;z-index:10001;" onclick="closeGallery()">&times;</span>
+      <img id="galleryImg" src="" alt="Gallery Image" style="max-width:90vw;max-height:80vh;box-shadow:0 8px 40px #000a;border-radius:12px;display:block;margin:auto;">
+      <button id="galleryPrev" onclick="galleryPrev(event)" style="position:absolute;left:40px;top:50%;transform:translateY(-50%);font-size:2rem;background:none;border:none;color:#fff;cursor:pointer;">&#8592;</button>
+      <button id="galleryNext" onclick="galleryNext(event)" style="position:absolute;right:40px;top:50%;transform:translateY(-50%);font-size:2rem;background:none;border:none;color:#fff;cursor:pointer;">&#8594;</button>
+    </div>
+
+    <section id="resume">
+      <h2>Resume</h2>
+      
+      <h3>Professional Experience</h3>
+      <ul>
+        <li>Social Media Content Creator - 2022 to Present</li>
+        <li>Freelance Illustrator and Web Designer - 2021 to Present</li>
+      </ul>
+
+      <h3>Skills</h3>
+      <ul>
+        <li>Adobe Illustrator, Photoshop, Premiere Pro</li>
+        <li>Figma, Webflow</li>
+        <li>Motion Graphics, Visual Storytelling</li>
+      </ul>
+
+      <h3>Education</h3>
+      <p>Bachelor's Degree in New Media and Communication, Yaşar University (2021 - Present)</p>
+
+      <h3>Download Full CV</h3>
+      <a href="Furkan Kilic CV.pdf.pdf" class="cv-download" download>
+        <i class="fas fa-file-pdf"></i> Download My Complete Resume (PDF)
+      </a>
+      <p style="font-size: 0.9rem; color: #666; margin-top: 0.5em;">
+        Complete CV including detailed project descriptions, certifications, and references.
+      </p>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Let's connect and discuss potential collaborations or opportunities.</p>
+      
+      <div class="contact-form">
+        <h3>Send me a message</h3>
+        <form class="custom-contact-form" id="contactForm" autocomplete="off">
+          <label for="firstName">First Name</label>
+          <input type="text" id="firstName" name="firstName" required>
+          <div class="error-message" id="firstNameError">Please enter your first name</div>
+
+          <label for="lastName">Last Name</label>
+          <input type="text" id="lastName" name="lastName" required>
+          <div class="error-message" id="lastNameError">Please enter your last name</div>
+
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" required>
+          <div class="error-message" id="phoneError">Please enter a valid phone number</div>
+
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+          <div class="error-message" id="emailError">Please enter a valid email address</div>
+
+          <button type="submit" id="submitButton">Send Message</button>
+          <div class="success-message" id="successMessage">
+            Thank you for your message! I'll get back to you soon.
+          </div>
+        </form>
+        
+        <div class="social-links-container">
+          <div class="social-links-title">Connect with me directly</div>
+          <div class="social-icons">
+            <a href="mailto:furkan6h@gmail.com" class="social-icon email" target="_blank">
+              <i class="fas fa-envelope"></i>
+              <span>Email</span>
+            </a>
+            <a href="https://www.linkedin.com/in/furkan-k%C4%B1l%C4%B1%C3%A7-0474a7367/" class="social-icon linkedin" target="_blank">
+              <i class="fab fa-linkedin"></i>
+              <span>LinkedIn</span>
+            </a>
+            <a href="https://www.instagram.com/furkanimbn/" class="social-icon instagram" target="_blank">
+              <i class="fab fa-instagram"></i>
+              <span>Instagram</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script>
+    // Initialize EmailJS with your public key
+    (function() {
+      emailjs.init("HIJP0tmxBFtRyoAEM");
+    })();
+
+    // Contact Form Validation and Submission
+    const contactForm = document.getElementById('contactForm');
+    const submitButton = document.getElementById('submitButton');
+    const successMessage = document.getElementById('successMessage');
+
+    function validateEmail(email) {
+      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return re.test(email);
+    }
+
+    function validatePhone(phone) {
+      const re = /^[\d\s-+()]{10,}$/;
+      return re.test(phone);
+    }
+
+    function showError(input, errorElement, message) {
+      input.classList.add('error');
+      errorElement.style.display = 'block';
+      errorElement.textContent = message;
+    }
+
+    function hideError(input, errorElement) {
+      input.classList.remove('error');
+      errorElement.style.display = 'none';
+    }
+
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      let isValid = true;
+
+      // Reset previous errors
+      document.querySelectorAll('.error-message').forEach(el => el.style.display = 'none');
+      document.querySelectorAll('input').forEach(input => input.classList.remove('error'));
+
+      // Validate First Name
+      const firstName = document.getElementById('firstName');
+      if (!firstName.value.trim()) {
+        showError(firstName, document.getElementById('firstNameError'), 'Please enter your first name');
+        isValid = false;
+      }
+
+      // Validate Last Name
+      const lastName = document.getElementById('lastName');
+      if (!lastName.value.trim()) {
+        showError(lastName, document.getElementById('lastNameError'), 'Please enter your last name');
+        isValid = false;
+      }
+
+      // Validate Phone
+      const phone = document.getElementById('phone');
+      if (!validatePhone(phone.value)) {
+        showError(phone, document.getElementById('phoneError'), 'Please enter a valid phone number');
+        isValid = false;
+      }
+
+      // Validate Email
+      const email = document.getElementById('email');
+      if (!validateEmail(email.value)) {
+        showError(email, document.getElementById('emailError'), 'Please enter a valid email address');
+        isValid = false;
+      }
+
+      if (isValid) {
+        submitButton.disabled = true;
+        submitButton.textContent = 'Sending...';
+
+        try {
+          // Prepare the email template parameters
+          const templateParams = {
+            from_name: `${firstName.value} ${lastName.value}`,
+            from_email: email.value,
+            phone_number: phone.value,
+            to_email: 'furkan6h@gmail.com',
+            message: `New contact form submission from ${firstName.value} ${lastName.value}\n\nPhone: ${phone.value}\nEmail: ${email.value}`
+          };
+
+          // Send the email using EmailJS
+          await emailjs.send('furkankılıçportfolio', 'template_q4r2zfr', templateParams);
+          
+          contactForm.reset();
+          successMessage.style.display = 'block';
+          setTimeout(() => {
+            successMessage.style.display = 'none';
+          }, 5000);
+        } catch (error) {
+          console.error('Error sending email:', error);
+          alert('There was an error sending your message. Please try again.');
+        } finally {
+          submitButton.disabled = false;
+          submitButton.textContent = 'Send Message';
+        }
+      }
+    });
+
+    // Real-time validation
+    document.querySelectorAll('input').forEach(input => {
+      input.addEventListener('input', () => {
+        const errorElement = document.getElementById(`${input.id}Error`);
+        if (input.value.trim()) {
+          hideError(input, errorElement);
+        }
+      });
+    });
+
+    // Scroll-triggered fade-in animation
+    const sections = document.querySelectorAll('section');
+
+    function checkSections() {
+      const triggerBottom = window.innerHeight * 0.85;
+
+      sections.forEach(section => {
+        const sectionTop = section.getBoundingClientRect().top;
+
+        if (sectionTop < triggerBottom) {
+          section.classList.add('visible');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', checkSections);
+    window.addEventListener('load', checkSections);
+
+    // Hero fade-in animation
+    window.addEventListener('DOMContentLoaded', () => {
+      const hero = document.getElementById('hero');
+      if (hero) {
+        setTimeout(() => hero.classList.add('fade-in'), 200);
+      }
+    });
+
+    // Smooth scrolling for navigation
+    document.querySelectorAll('nav a').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href === '#home') {
+          e.preventDefault();
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        } else {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        }
+      });
+    });
+
+    // Modal logic for project images
+    function openModal(imgSrc) {
+      document.getElementById('modalImg').src = imgSrc;
+      document.getElementById('imgModal').style.display = 'flex';
+    }
+    function closeModal() {
+      document.getElementById('imgModal').style.display = 'none';
+      document.getElementById('modalImg').src = '';
+    }
+
+    // Lightbox gallery logic for Project 2
+    const galleryImages = [
+      'lightbox1.jpg',
+      'lightbox2.jpg',
+      'lightbox3.jpg',
+      'lightbox4.jpg',
+      'lightbox5.jpg'
+    ];
+    let currentGalleryIndex = 0;
+    function openGallery(idx) {
+      currentGalleryIndex = idx;
+      document.getElementById('galleryImg').src = galleryImages[idx];
+      document.getElementById('galleryModal').style.display = 'flex';
+    }
+    function closeGallery() {
+      document.getElementById('galleryModal').style.display = 'none';
+      document.getElementById('galleryImg').src = '';
+    }
+    function galleryPrev(e) {
+      e.stopPropagation();
+      currentGalleryIndex = (currentGalleryIndex + galleryImages.length - 1) % galleryImages.length;
+      document.getElementById('galleryImg').src = galleryImages[currentGalleryIndex];
+    }
+    function galleryNext(e) {
+      e.stopPropagation();
+      currentGalleryIndex = (currentGalleryIndex + 1) % galleryImages.length;
+      document.getElementById('galleryImg').src = galleryImages[currentGalleryIndex];
+    }
+
+    // Smooth scroll for navbar logo
+    document.querySelector('.navbar-logo').addEventListener('click', function(e) {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Hero photo click rotation animation
+    const heroPhotoContainer = document.querySelector('.hero-photo-container');
+    const heroPhoto = document.querySelector('.hero-photo');
+    if (heroPhotoContainer && heroPhoto) {
+      heroPhotoContainer.addEventListener('click', () => {
+        heroPhoto.style.transition = 'transform 0.5s cubic-bezier(.4,0,.2,1)';
+        heroPhoto.style.transform = 'scale(1.07) rotate(70deg)';
+        setTimeout(() => {
+          heroPhoto.style.transition = 'transform 0.7s cubic-bezier(.4,0,.2,1)';
+          heroPhoto.style.transform = 'scale(1.07) rotate(0deg)';
+        }, 400);
+      });
+      // Reset on mouseleave in case user moves mouse away during animation
+      heroPhotoContainer.addEventListener('mouseleave', () => {
+        heroPhoto.style.transition = 'transform 0.35s cubic-bezier(.4,0,.2,1)';
+        heroPhoto.style.transform = 'scale(1) rotate(0deg)';
+      });
+    }
+
+    // Dark mode toggle with Material Icons
+    const darkToggle = document.getElementById('darkToggle');
+    const darkIcon = document.getElementById('darkIcon');
+    function setDarkMode(on) {
+      if (on) {
+        document.body.classList.add('dark-mode');
+        darkIcon.textContent = 'light_mode';
+        localStorage.setItem('furkan_dark', '1');
+      } else {
+        document.body.classList.remove('dark-mode');
+        darkIcon.textContent = 'dark_mode';
+        localStorage.setItem('furkan_dark', '0');
+      }
+    }
+    // Initial mode from localStorage
+    setDarkMode(localStorage.getItem('furkan_dark') === '1');
+    darkToggle.addEventListener('click', () => {
+      setDarkMode(!document.body.classList.contains('dark-mode'));
+    });
+  </script>
+
+</body>
+</html>
